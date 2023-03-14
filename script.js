@@ -14,7 +14,7 @@ for (let key of keys) {
       display_output.innerHTML = "";
     } else if (value == "backspace") {
       input = input.slice(0, -1);
-      display_input.innerHTML = input;
+      display_input.innerHTML = CleanInput(input);
     } else if (value == "=") {
       let result = eval(input);
 
@@ -35,9 +35,35 @@ for (let key of keys) {
       ) {
         input += ")";
       }
+      display_input.innerHTML = CleanInput(input);
     } else {
       input += value;
-      display_input.innerHTML = input;
+      display_input.innerHTML = CleanInput(input);
     }
   });
+}
+
+function CleanInput(input) {
+  let inputArray = input.split("");
+  let inputArrayLength = inputArray.length;
+
+  for (let i = 0; i < inputArrayLength; i++) {
+    if (inputArray[i] == "*") {
+      inputArray[i] = ` <span class="operator">x</span> `;
+    } else if (inputArray[i] == "/") {
+      inputArray[i] = ` <span class="operator">÷</span> `;
+    } else if (inputArray[i] == "+") {
+      inputArray[i] = ` <span class="operator">+</span> `;
+    } else if (inputArray[i] == "-") {
+      inputArray[i] = ` <span class="operator">-</span> `;
+    } else if (inputArray[i] == "(") {
+      inputArray[i] = `<span class="brackets">(</span>`;
+    } else if (inputArray[i] == ")") {
+      inputArray[i] = `<span class="brackets">)</span>`;
+    } else if (inputArray[i] == "%") {
+      inputArray[i] = `<span class="percent">%</span>`;
+    }
+  }
+
+  return inputArray.join("");
 }
