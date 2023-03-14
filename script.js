@@ -8,17 +8,24 @@ for (let key of keys) {
   const value = key.dataset.key;
 
   key.addEventListener("click", () => {
+    //check for clear button
+
     if (value == "clear") {
       input = "";
       display_input.innerHTML = "";
       display_output.innerHTML = "";
+
+      //check for backspace button
     } else if (value == "backspace") {
       input = input.slice(0, -1);
       display_input.innerHTML = CleanInput(input);
+
+      //check for equals button
     } else if (value == "=") {
       let result = eval(PrepareInput(input));
-
       display_output.innerHTML = CleanOutput(result);
+
+      //check for brackets button
     } else if (value == "brackets") {
       if (
         input.indexOf("(") == -1 ||
@@ -70,6 +77,9 @@ function CleanInput(input) {
   return inputArray.join("");
 }
 
+//adding commas to big outputs
+//adding decimal output functionality
+
 function CleanOutput(output) {
   let outputString = output.toString();
   let decimal = outputString.split(".")[1];
@@ -91,6 +101,8 @@ function CleanOutput(output) {
   return outputArray.join("");
 }
 
+//validating input so users can't input multiple of one operator or decimal point
+
 function ValidateInput(value) {
   let lastInput = input.slice(-1);
   let operators = ["+", "-", "/", "*"];
@@ -109,6 +121,8 @@ function ValidateInput(value) {
 
   return true;
 }
+
+//adding full functionality to the percentage button
 
 function PrepareInput(input) {
   let inputArray = input.split("");
