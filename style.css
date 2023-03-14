@@ -59,12 +59,12 @@
 }
 
 .display .operator {
-    color: #EB6666;
+    color: #724C9D;
 }
 
 .display .brackets,
 .display .percent {
-    color: #26FED7;
+    color: #724C9D;
 }
 
 
@@ -111,9 +111,9 @@
 }
 
 .keys .key.operator span {
-    color: #EB6666;
+    color: #724C9D;
 }
 
 .keys .key.action span {
-    color: #26FED7;
+    color: #724C9D;
 }
