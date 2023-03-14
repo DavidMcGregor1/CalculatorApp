@@ -33,7 +33,7 @@ for (let key of keys) {
           input.indexOf(")") != -1 &&
           indexedDB.lastIndexOf("(") > input.lastIndexOf(")"))
       ) {
-        input -= ")";
+        input += ")";
       }
     } else {
       input += value;
