@@ -16,7 +16,7 @@ for (let key of keys) {
       input = input.slice(0, -1);
       display_input.innerHTML = CleanInput(input);
     } else if (value == "=") {
-      let result = eval(input);
+      let result = eval(PrepareInput(input));
 
       display_output.innerHTML = CleanOutput(result);
     } else if (value == "brackets") {
@@ -108,4 +108,15 @@ function ValidateInput(value) {
   }
 
   return true;
+}
+
+function PrepareInput(input) {
+  let inputArray = input.split("");
+
+  for (let i = 0; i < inputArray.length; i++) {
+    if (inputArray[i] == "%") {
+      inputArray[i] = "/100";
+    }
+  }
+  return inputArray.join("");
 }
